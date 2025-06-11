@@ -28,8 +28,11 @@ membership-frontend/node_modules/
 membership-frontend/build/
 membership-frontend/.env
 membership-frontend/.DS_Store
+membership-frontend/.env.prd
 
 # membership-backend (Node.js)
 membership-backend/node_modules/
 membership-backend/.env
 membership-backend/.DS_Store
+membership-backend/.env.prd
+

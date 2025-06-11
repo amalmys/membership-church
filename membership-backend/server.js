@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const allowedOrigins = ['https://your-frontend.vercel.app'];
+const allowedOrigins = ['https://your-frontend.vercel.app','http://localhost:3000'];
 
 app.use(cors({
   origin: function (origin, callback) {

@@ -18,14 +18,14 @@ function MemberTable() {
   }, []);
 
   const fetchData = async () => {
-    const res = await axios.get('http://localhost:5000/api/members', {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/members`, {
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 });
     setMembers(res.data);
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/members/${id}`, {
+    await axios.delete(`${process.env.REACT_APP_API_URL}/members/${id}`, {
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 });
     fetchData();
@@ -70,7 +70,8 @@ function MemberTable() {
   };
 
   const saveEdit = async () => {
-    await axios.put(`http://localhost:5000/api/members/${editData._id}`, editData);
+    await axios.put(`${process.env.REACT_APP_API_URL}/members/${editData._id}`, editData,
+      {  headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }});
     setEditModalShow(false);
     fetchData();
   };

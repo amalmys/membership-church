@@ -11,7 +11,7 @@ function MemberForm() {
   };
 
   const handleSubmit = async () => {
-    await axios.post('http://localhost:5000/api/members', member, {
+    await axios.post(`${process.env.REACT_APP_API_URL}/members`, member, {
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 });
     setShow(false);
