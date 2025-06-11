@@ -6,7 +6,7 @@ const {
   deleteMember,
   getMemberById
 } = require('../controllers/memberController');
-const verifyToken = require('../middleware/authMiddleWare');
+const verifyToken = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
