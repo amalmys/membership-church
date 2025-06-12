@@ -14,7 +14,7 @@ function App() {
         <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
       </Routes>
     </Router>
-    <ToastContainer position="top-center" autoClose={2000} />
+    <ToastContainer position="top-center" autoClose={1500} />
     </>
   );
 }
