@@ -31,7 +31,11 @@ function MemberForm() {
           <Form>
             <Form.Control name="firstName" placeholder="First Name" onChange={handleChange} />
             <Form.Control name="lastName" placeholder="Last Name" onChange={handleChange} className="mt-2" />
-            <Form.Control type="date" name="dob" placeholder="DOB" onChange={handleChange} className="mt-2" />
+           <Form.Group className="mt-2">
+  <Form.Label>Date of Birth</Form.Label>
+  <Form.Control type="date" name="dob" onChange={handleChange} />
+</Form.Group>
+
             <Form.Control name="age" placeholder="Age" onChange={handleChange} className="mt-2" />
             <div className="mt-2">
               Gender:
