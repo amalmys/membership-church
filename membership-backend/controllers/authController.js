@@ -7,8 +7,6 @@ exports.login = async (req, res) => {
   const user = await User.findOne({ email });
   if (!user) return res.status(401).json({ msg: 'Invalid email' });
 
-  console.log('pwd',password,user.password)
-
   const isMatch = password === user.password;
   if (!isMatch) return res.status(401).json({ msg: 'Invalid password' });
 
