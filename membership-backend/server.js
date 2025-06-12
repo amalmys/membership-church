@@ -53,7 +53,7 @@ cron.schedule('30 3 * * *', async () => {
 });
 
 // Send email at 9:00 PM IST (3:30 PM UTC)
-cron.schedule('45 11 * * *', async () => {
+cron.schedule('30 15 * * *', async () => {
   console.log("⏰ [CRON] 9:00 PM IST Reminder");
   await sendBirthdayReminders(1, 'for tomorrow');
 });
