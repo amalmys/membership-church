@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const moment = require('moment-timezone');
 const dotenv = require('dotenv');
+const cron = require('node-cron');
 dotenv.config();
 
 const authRoutes = require('./routes/authRoutes');
 const memberRoutes = require('./routes/memberRoutes');
+const sendBirthdayReminders = require('./utils/cronJob')
 
 const app = express();
 app.use(cors());
@@ -34,3 +37,24 @@ mongoose.connect(process.env.MONGO_URI)
       console.log(`Server running on http://localhost:${process.env.PORT}`);
     });
   }).catch(err => console.error(err));
+
+// cron.schedule('* * * * *', async () => {
+//   const nowIST = moment().tz('Asia/Kolkata');
+  
+//   if (nowIST.hour() === 16 && nowIST.minute() === 44) {
+//     console.log("🎉 Running birthday reminder for 4:44 PM IST");
+//     await sendBirthdayReminders(0, 'Tomorrow 9 AM Reminder');
+//   }
+// });
+
+cron.schedule('30 3 * * *', async () => {
+  console.log("⏰ [CRON] 9:00 AM IST Reminder");
+  await sendBirthdayReminders(0, 'for today');
+});
+
+// Send email at 9:00 PM IST (3:30 PM UTC)
+cron.schedule('30 15 * * *', async () => {
+  console.log("⏰ [CRON] 9:00 PM IST Reminder");
+  await sendBirthdayReminders(1, 'for tomorrow');
+});
+

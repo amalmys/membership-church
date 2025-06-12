@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function MemberForm() {
   const [show, setShow] = useState(false);
@@ -15,7 +16,8 @@ function MemberForm() {
   headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
 });
     setShow(false);
-    window.location.reload();
+    toast.success('Member added successfully!');
+    setTimeout(()=>window.location.reload(),1000)
   };
 
   return (
